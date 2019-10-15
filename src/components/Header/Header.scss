@@ -1,7 +1,7 @@
 .header{
     text-align: center;
     background-color: #000;
-    color: #fff;
+    color: #FFD034;
 }
 .header-items {
     padding-top: 3em;
@@ -17,4 +17,14 @@
     margin-right: .5em;
     margin-left: .5em;
     margin-top: .5em;
+}
+
+.btn-blue {
+    background-color: #0072BB;
+    color: #fff;
+}
+
+.active {
+    background-color: #FFD034;
+    color: #000
 }

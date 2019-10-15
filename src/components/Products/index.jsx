@@ -8,20 +8,36 @@ const Products = (props) => {
             string.split(' ').slice(0,20).join(' ')
         )
     }
+
+    const price = (currency, arr) => {
+        switch (currency){
+            case 'EUR':
+                return `${arr.prices[0].price} ${arr.prices[0].currency}`
+            case 'KES':
+                return `${arr.prices[1].price} ${arr.prices[1].currency}`
+            case 'NGN':
+                return `${arr.prices[2].price} ${arr.prices[2].currency}`
+            default:
+                return `${arr.prices[3].price} ${arr.prices[3].currency}`
+        }
+    }
     return (
         <div className="row products">
-            {products.map((element, index) => {
-                console.log(element.prices[0].price)
+            {products && products.map((element, index) => {
                 return (
-                    <div className="col-md-4 product" key={index}> 
+                    <div className="col-md-3 product" key={index}> 
                     <div className="card">
-                        <img className="card-img-bottom" src={element.image_url} alt={element.name}/>
+                        
+                        {props.showProduct !== index && <img className="card-img-bottom" src={element.image_url} alt={element.name}/>}
+                        <button className="btn btn-blue"> Buy</button>
                         <div className="card-body">
                             <h4 className="card-title">{element.name}</h4>
-                            <p className="card-text">{element.prices[0].price}</p>
-                            <p className="card-text">{`${shortenString(element.description)}...`}</p>
-                            
-                            <button className="btn btn-secondary">More</button>
+                            <p className="card-text">{price(props.currency, element)}</p>
+                            <p className="card-text">{props.showProduct !== index ?`${shortenString(element.description)}...` : element.description}</p>
+                            {props.showProduct !== index 
+                            ? <button className="btn btn-secondary" onClick={props.showProductDetails(index)}>More</button>
+                            : <button className="btn btn-secondary" onClick={props.showProductDetails('')}>Close</button>
+                        }
                         </div>
                     </div>
                 </div>

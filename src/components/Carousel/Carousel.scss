@@ -1,26 +1,32 @@
 .carousel {
     text-align: center;
-    background-color: #f5faf5;
+    background-color: #FFD034;
+    padding-top: 3em;
+    padding-bottom: 3em;
 }
 
 .image-display{
     margin-top: 2em;
     margin-bottom: 2em;
 }
-
+.image-display img{
+    margin-left: 1em;
+    margin-right: 1em;
+}
 #amazing {
     font-size: 3em;
     position: relative;
-    left: 1.5em;
+    left: .2em;
 }
 
 #store {
     font-size: 3em;
     position: relative;
-    right: 1.5em;
+    right: .2em;
 }
 
 .navigators {
     position: relative;
-    top: 5em;
+    top: 2em;
+    font-size: 2em;
 }

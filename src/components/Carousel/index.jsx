@@ -7,10 +7,11 @@ const Carousel = (props) => {
             <div className="col-md-12 ">
                 <div className="image-display">
                     <span id="amazing">Amazing</span>
-                    <span className="navigators btn btn-default">Prev</span>
+                    <button className="navigators btn fa fa-arrow-left" onClick={props.carouselPrev}> </button>
+                    
                     <img src={props.image} alt="" />
-                    <span  className="navigators btn btn-default">Next</span>
-                    <span id="store">e-commerce</span>
+                    <button className="navigators btn fa fa-arrow-right" onClick={props.carouselNext}> </button>
+                    <span id="store">E-commerce</span>
                 </div>
             </div>
         </div>
