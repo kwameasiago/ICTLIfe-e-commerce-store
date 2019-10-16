@@ -12,21 +12,76 @@
 .image-display img{
     margin-left: 1em;
     margin-right: 1em;
+    height: 300px;
 }
 #amazing {
     font-size: 3em;
     position: relative;
     left: .2em;
+    animation-name: slide-left;
+    animation-duration: 2s;
+}
+
+@keyframes slide-left{
+    from{left: -20em}
+    to{left: .2em}
 }
 
 #store {
     font-size: 3em;
     position: relative;
-    right: .2em;
+    right: 0em;
+    animation-name: slide-right;
+    animation-duration: 1s;
 }
 
+@keyframes slide-right{
+    from{right: 20em;}
+    to{right: .2em;}
+}
 .navigators {
     position: relative;
     top: 2em;
     font-size: 2em;
+    animation-name: fade-in;
+    animation-duration: 2s;
+}
+
+@keyframes fade-in{
+    from{opacity: 0}
+    to{opacity: 1;}
+}
+
+.slide-up{
+    position: relative;
+    animation-name: slide-up;
+    animation-duration: 1s;
+}
+
+@keyframes slide-up{
+    from{bottom: 20em}
+    to{bottom: 0em}
+}
+
+
+.slide-down{
+    position: relative;
+    animation-name: slide-down;
+    animation-duration: 1s;
+}
+
+@keyframes slide-down{
+    from{top: -20em}
+    to{top: 0em;}
+}
+
+.fade-in{
+    opacity: 3s;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+@keyframes fade-in{
+    from{opacity: 0;}
+    to{opacity: 1;}
 }

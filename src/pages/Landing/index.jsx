@@ -9,7 +9,8 @@ class Landing extends Component {
     state = {
         products: [],
         imageIndex: 0,
-        currency: 'EUR'
+        currency: 'EUR',
+        animation: 'fade-in'
     }
 
     componentDidMount() {
@@ -26,6 +27,9 @@ class Landing extends Component {
         }
     }
 
+    /**
+     * get all the images from the json file
+     */
     getImages = () => {
         const images = []
         const { products } = this.state;
@@ -35,39 +39,55 @@ class Landing extends Component {
         return images
     }
 
+    /**
+     * slide to the next image in the carousel
+     */
     carouselNext = () => {
         const { imageIndex } = this.state;
         imageIndex >= this.getImages().length - 1
         ? this.setState({
             ...this.state,
-            imageIndex: 0
+            animation: this.state.animation === 'slide-down'? 'slide-up': 'slide-down',
+            imageIndex: 0,
         })
         : this.setState(prevState => ({
             ...prevState,
-            imageIndex: ++prevState.imageIndex
+            imageIndex: ++prevState.imageIndex,
+            animation: prevState.animation === 'slide-down'? 'slide-up': 'slide-down'
         }))
     }
 
+    /**
+     * slides to the prev image in the carousel
+     */
     carouselPrev = () => {
         const { imageIndex } = this.state;
         imageIndex <= 0
         ? this.setState({
             ...this.state,
-            imageIndex: this.getImages().length - 1
+            imageIndex: this.getImages().length - 1,
+            animation: this.state.animation === 'slide-down'? 'slide-up': 'slide-down',
         })
         : this.setState(prevState => ({
             ...prevState,
-            imageIndex: --prevState.imageIndex
+            imageIndex: --prevState.imageIndex,
+            animation: prevState.animation === 'slide-down'? 'slide-up': 'slide-down'
         }))
     }
 
-    setCurrency = (currency) => () => {
+    /**
+     * updatets the currency
+     */
+    setCurrency = (currency, key) => () => {
         this.setState({
             ...this.state,
-            currency
+            currency: {[`product${key}`]: currency}
         })
     }
 
+    /**
+     * toggle the product description
+     */
     showProductDetails = (key) => () => {
         this.setState(prevState => ({
             ...prevState,
@@ -82,13 +102,15 @@ class Landing extends Component {
                     <Carousel 
                     image={this.getImages()[this.state.imageIndex]}
                     carouselNext={this.carouselNext}
-                    carouselPrev={this.carouselPrev}/>
+                    carouselPrev={this.carouselPrev}
+                    animation={this.state.animation}/>
                     <Header setCurrency={this.setCurrency} currency={this.state.currency}/>
                     <Products 
                     products={this.state.products}
                     currency={this.state.currency}
                     showProduct={this.state.showProduct}
                     showProductDetails={this.showProductDetails}
+                    setCurrency={this.setCurrency}
                     />
                 </div>
             </React.Fragment>

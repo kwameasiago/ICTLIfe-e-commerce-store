@@ -9,7 +9,7 @@ const Carousel = (props) => {
                     <span id="amazing">Amazing</span>
                     <button className="navigators btn fa fa-arrow-left" onClick={props.carouselPrev}> </button>
                     
-                    <img src={props.image} alt="" />
+                    <img src={props.image} alt="slide image" className={props.animation}/>
                     <button className="navigators btn fa fa-arrow-right" onClick={props.carouselNext}> </button>
                     <span id="store">E-commerce</span>
                 </div>
